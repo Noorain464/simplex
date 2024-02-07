@@ -52,15 +52,12 @@ def pldu(M):
 
     return P, L, D, U
 
-def multiply_pldu(P, L, D, U):
-        PL = multiply(P, L)
-        PLD = multiply(PL, D)
-        PLDU = multiply(PLD, U)
-        return PLDU
-
 def verify_pldu(matrix):
     P, L, D, U = pldu(matrix)
-    multiplied_matrix = multiply_pldu(P, L, D, U)
+    PL = multiply(P, L)
+    PLD = multiply(PL, D)
+    PLDU = multiply(PLD, U)
+    multiplied_matrix = PLDU
 
     if multiplied_matrix == matrix:
         print("PLDU equals the original matrix.")
