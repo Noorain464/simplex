@@ -51,3 +51,20 @@ def pldu(M):
         U[i][i] = 1
 
     return P, L, D, U
+
+def multiply_pldu(P, L, D, U):
+        PL = multiply(P, L)
+        PLD = multiply(PL, D)
+        PLDU = multiply(PLD, U)
+        return PLDU
+
+def verify_pldu(matrix):
+    P, L, D, U = pldu(matrix)
+    multiplied_matrix = multiply_pldu(P, L, D, U)
+
+    if multiplied_matrix == matrix:
+        print("PLDU equals the original matrix.")
+    else:
+        print("PLDU not equal to the original matrix.")
+matrix = [[2, 1, 3], [4, 2, 6], [7, 8, 9]]
+verify_pldu(matrix)
