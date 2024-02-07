@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 
-
+ 
 num_coeffs_c = int(input("Size "))
 
 c = [float(input(f"Coefficient {i + 1}: ")) for i in range(num_coeffs_c)]
@@ -15,8 +15,6 @@ A = [[float(input(f"Coefficient {j + 1} for constraint {i + 1}: ")) for j in ran
 
 print("\nEnter the right-hand side values of the constraints:")
 b = [float(input(f"Value for constraint {i + 1}: ")) for i in range(num_constraints)]
-
-
 
 
 def simplex(c, A, b):
@@ -36,6 +34,7 @@ def to_tableau(c, A, b):
 def can_be_improved(tableau):
     z = tableau[-1]
     return any(x > 0 for x in z[:-1])
+
 def get_pivot_position(tableau):
     z = tableau[-1]
     column = next(i for i, x in enumerate(z[:-1]) if x > 0)
@@ -47,6 +46,7 @@ def get_pivot_position(tableau):
 
     row = restrictions.index(min(restrictions))
     return row, column
+
 def pivot_step(tableau, pivot_position):
     new_tableau = [[] for eq in tableau]
 
